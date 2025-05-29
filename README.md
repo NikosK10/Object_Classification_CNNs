@@ -2,23 +2,23 @@
 
 This repository contains the implementation and analysis for **Lab Assignment 2** in the course *Image and Video Technology and Analysis*. The lab focuses on training Convolutional Neural Networks (CNNs) using a subset of the CIFAR-100 dataset and comparing the performance of different architectures and configurations.
 
-## 📁 Contents
+## Contents
 
-- 📄 Theoretical comparison of LeNet, AlexNet, and VGG architectures
-- 🧠 Implementation of CNNs from scratch using PyTorch
-- 🔁 Experimental comparisons with varying architecture depth, dropout, batch size, and more
-- 📊 Evaluation metrics (accuracy/loss plots)
-- 📝 Commentary and observations in markdown cells
+- Theoretical comparison of LeNet, AlexNet, and VGG architectures
+- Implementation of CNNs from scratch using PyTorch
+- Experimental comparisons with varying architecture depth, dropout, batch size, and more
+- Evaluation metrics (accuracy/loss plots)
+- Commentary and observations in markdown cells
 
 ---
 
-## 📌 Part 1 – Theoretical Section
+## Part 1 – Theoretical Section
 
 We reviewed three classic CNN architectures used in image recognition:
 
-1. **LeNet** (Digit recognition, MNIST)
-2. **AlexNet** (ImageNet Classification)
-3. **VGG** (Deep convolutional blocks)
+1. **LeNet** – designed for handwritten digit recognition (MNIST)
+2. **AlexNet** – a deeper network that won the ImageNet competition in 2012
+3. **VGG** – a very deep architecture based on stacked convolutional blocks
 
 For each architecture, we compared:
 
@@ -29,71 +29,65 @@ For each architecture, we compared:
 - Pooling strategies
 - Use of dropout
 
-This was summarized in a comparative table with a brief discussion on performance and efficiency.
+This information was compiled into a comparison table followed by a short analysis of each model's efficiency and accuracy.
 
 ---
 
-## 🧪 Part 2 – Experimental Section
+## Part 2 – Experimental Section
 
-The implementation used a custom CIFAR-100 subset derived via a `team_seed` parameter set to the last 3 digits of my student ID.
+We evaluated the performance of all three architectures (LeNet, AlexNet, VGG) on a custom subset of CIFAR-100. After that, we also designed and tested a custom architecture of our own, aiming to improve performance based on insights gained from the theoretical models.
 
-### ✅ Baseline Model
-
-- 3 convolutional layers with ReLU activation
-- MaxPooling and Dropout layers
-- Fully connected classifier
-- Trained for 20 epochs
-
-### 🔄 Experiments Conducted
+### Experiments Conducted
 
 1. **Dropout Variation**
-   - Compared different dropout rates (e.g., 0.3 vs 0.5) and their effect on overfitting
+   - Compared different dropout rates (e.g., 0.3 vs 0.5) and analyzed the impact on generalization and overfitting.
 
 2. **Depth Variation**
-   - Increased the number of convolutional layers to examine improvements in feature learning
+   - Increased the number of convolutional layers to observe the effect of depth on learning capability.
 
 3. **Batch Size Comparison**
-   - Trained the same model with different batch sizes (32 vs 64) to observe training stability and generalization
+   - Tested batch sizes such as 32 and 64 to study training stability and model convergence.
 
 4. **Optimizer Comparison**
-   - Tested `SGD` vs `Adam` optimizers under same conditions
+   - Compared `SGD` and `Adam` optimizers under identical conditions to evaluate convergence speed and final accuracy.
 
 5. **Weight Initialization**
-   - Applied different initialization schemes and discussed their impact
+   - Tried different weight initialization strategies and documented their effect on early training behavior.
 
 6. **Data Augmentation**
-   - Introduced transformations such as horizontal flip and normalization to boost model robustness
+   - Applied basic augmentation techniques (e.g., horizontal flips, normalization) to improve generalization.
 
 ---
 
-## 📈 Evaluation
+## Evaluation
 
 Each experiment includes:
-- Accuracy and loss plots (train vs validation)
+- Accuracy and loss plots (training vs validation)
 - Final test accuracy
-- Observations and conclusions in markdown form
+- Observations and insights documented in markdown cells
 
-Metrics and figures are printed and visualized directly within the notebook.
-
----
-
-## 🧠 Observations
-
-- Deeper architectures improved accuracy up to a point, beyond which overfitting appeared.
-- Dropout 0.5 performed better in preventing overfitting compared to 0.3.
-- Batch size 64 achieved smoother loss convergence than 32.
-- Adam optimizer converged faster than SGD, especially in early epochs.
-- Data augmentation improved generalization, particularly on smaller training sets.
+All outputs are included in the notebook for easy inspection.
 
 ---
 
-## 🧾 Usage
+## Observations
 
-Open the notebook in Google Colab or locally with Jupyter and run all cells. Make sure to adjust the path to your CIFAR-100 subset and ensure all dependencies are installed (e.g., `torch`, `torchvision`, `matplotlib`).
+- Deeper networks generally performed better up to a point, after which overfitting became noticeable.
+- Higher dropout values (0.5) helped mitigate overfitting compared to lower values.
+- Batch size 64 produced smoother and more stable training curves than 32.
+- Adam converged faster and achieved higher accuracy than SGD in most trials.
+- Data augmentation positively impacted validation performance, especially in limited data scenarios.
+- Our custom architecture achieved competitive results when designed with a balanced depth and regularization strategy.
 
 ---
 
-## 👤 Author
+## Usage
+
+Open the notebook in Google Colab or run it locally using Jupyter Notebook. Ensure the necessary Python packages are installed (`torch`, `torchvision`, `matplotlib`, etc.). All experiments are reproducible within the notebook.
+
+---
+
+## Author
 
 **Nikolaos Katsaidonis**  
 Student ID: 03121868  
