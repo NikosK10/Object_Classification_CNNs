@@ -1,97 +1,109 @@
+
 # CIFAR-100 Classification and CNN Architectures
 
-This repository contains the implementation and analysis for **Lab Assignment 2** in the course *Image and Video Technology and Analysis*. The lab focuses on training Convolutional Neural Networks (CNNs) using a subset of the CIFAR-100 dataset and comparing the performance of different architectures and configurations.
+This repository presents the work conducted for **Lab Assignment 2** in the course *Image and Video Technology and Analysis*, focused on Convolutional Neural Networks (CNNs) and their performance on a subset of the CIFAR-100 dataset.
 
-## Contents
+## Overview
 
-- Theoretical comparison of LeNet, AlexNet, and VGG architectures
-- Implementation of CNNs from scratch using PyTorch
-- Experimental comparisons with varying architecture depth, dropout, batch size, and more
-- Evaluation metrics (accuracy/loss plots)
-- Commentary and observations in markdown cells
+The assignment is structured into two main parts:
+
+- **Part 1: Theoretical Analysis** of classic CNN architectures
+- **Part 2: Experimental Evaluation** of those architectures and a custom-designed one
+
+We implemented, trained, and evaluated several models using the same conditions to ensure fair comparisons. The core objective was to understand how different design choices affect the performance and generalization of CNNs.
 
 ---
 
 ## Part 1 – Theoretical Section
 
-We reviewed three classic CNN architectures used in image recognition:
+In the first section, we analyzed three foundational CNN models:
 
-1. **LeNet** – designed for handwritten digit recognition (MNIST)
-2. **AlexNet** – a deeper network that won the ImageNet competition in 2012
-3. **VGG** – a very deep architecture based on stacked convolutional blocks
+1. **LeNet** – a shallow network originally designed for digit classification.
+2. **AlexNet** – a deeper model that popularized CNNs through its success in ImageNet 2012.
+3. **VGG** – a very deep and regular architecture using stacked 3×3 convolutions.
 
-For each architecture, we compared:
+For each model, we provided:
+- Detailed layer-by-layer structure
+- Parameter count, activation functions, and pooling strategies
+- Data augmentation and regularization techniques
+- Reported performance on datasets like ImageNet or MNIST
 
-- Number and type of layers
-- Filter/kernel sizes
-- Activation functions used
-- Total number of parameters
-- Pooling strategies
-- Use of dropout
-
-This information was compiled into a comparison table followed by a short analysis of each model's efficiency and accuracy.
+This section includes comparison tables in markdown and extensive commentary to highlight each model’s strengths and limitations.
 
 ---
 
 ## Part 2 – Experimental Section
 
-We evaluated the performance of all three architectures (LeNet, AlexNet, VGG) on a custom subset of CIFAR-100. After that, we also designed and tested a custom architecture of our own, aiming to improve performance based on insights gained from the theoretical models.
+In this part, we used a subset of CIFAR-100 derived with a `team_seed` based on the last digits of the student ID. We **trained and compared all three architectures (LeNet, AlexNet, VGG)** under common hyperparameter settings and then **developed our own custom CNN (MyCNN)** tailored to the dataset constraints.
 
-### Experiments Conducted
+### Architectures Implemented
+- LeNet
+- AlexNet
+- VGG-like variant (adapted for 32×32 input size)
+- **MyCNN** – A custom model with 3 convolutional blocks and 2 FC layers
 
-1. **Dropout Variation**
-   - Compared different dropout rates (e.g., 0.3 vs 0.5) and analyzed the impact on generalization and overfitting.
+We systematically tested each of the above, and based on performance, we refined **MyCNN** using overfitting mitigation techniques and transfer learning.
 
-2. **Depth Variation**
-   - Increased the number of convolutional layers to observe the effect of depth on learning capability.
+---
 
-3. **Batch Size Comparison**
-   - Tested batch sizes such as 32 and 64 to study training stability and model convergence.
+## Experimental Techniques
+
+We explored and analyzed the effects of the following factors:
+
+1. **Overfitting Control**
+   - Dropout (0.3, 0.5)
+   - Data Augmentation (horizontal flips, brightness, contrast, etc.)
+
+2. **Architecture Depth**
+   - Shallow vs. deeper convolutional stacks
+
+3. **Batch Size**
+   - Comparisons of batch sizes (e.g., 32 vs 64) and their impact on convergence
 
 4. **Optimizer Comparison**
-   - Compared `SGD` and `Adam` optimizers under identical conditions to evaluate convergence speed and final accuracy.
+   - Training with `Adam` vs `SGD` under identical setups
 
-5. **Weight Initialization**
-   - Tried different weight initialization strategies and documented their effect on early training behavior.
-
-6. **Data Augmentation**
-   - Applied basic augmentation techniques (e.g., horizontal flips, normalization) to improve generalization.
+5. **Transfer Learning**
+   - Using **VGG19** and **EfficientNetB0** backbones
+   - Two cases:
+     - Freezing all convolutional layers and training only the classification head
+     - Fine-tuning last layers along with the head
 
 ---
 
 ## Evaluation
 
-Each experiment includes:
-- Accuracy and loss plots (training vs validation)
-- Final test accuracy
-- Observations and insights documented in markdown cells
+Each model was evaluated using:
+- **F1-Score** as the main metric (both validation and test sets)
+- **Training vs Validation performance plots**
+- Comparative discussions of training behavior, convergence, and generalization
 
-All outputs are included in the notebook for easy inspection.
-
----
-
-## Observations
-
-- Deeper networks generally performed better up to a point, after which overfitting became noticeable.
-- Higher dropout values (0.5) helped mitigate overfitting compared to lower values.
-- Batch size 64 produced smoother and more stable training curves than 32.
-- Adam converged faster and achieved higher accuracy than SGD in most trials.
-- Data augmentation positively impacted validation performance, especially in limited data scenarios.
-- Our custom architecture achieved competitive results when designed with a balanced depth and regularization strategy.
+All results are included in the notebook with visualizations and markdown commentary.
 
 ---
 
-## Usage
+## Key Observations
 
-Open the notebook in Google Colab or run it locally using Jupyter Notebook. Ensure the necessary Python packages are installed (`torch`, `torchvision`, `matplotlib`, etc.). All experiments are reproducible within the notebook.
+- **Deeper ≠ Better**: VGG performed well, but overfitted easily on the limited dataset. LeNet was more stable, but underfit.
+- **Custom model (MyCNN)** achieved the best balance between expressiveness and generalization.
+- **Data augmentation and dropout** significantly improved validation performance.
+- **Transfer learning**, especially when freezing convolutional layers, gave excellent F1 scores even with little training.
+- **Fine-tuning** performed worse than freezing, unless more epochs were allowed.
 
 ---
 
-## Author
+## How to Run
 
-**Nikolaos Katsaidonis**  
-National Technical University of Athens – School of Electrical & Computer Engineering
+You can run the notebook in **Google Colab** or locally using **Jupyter Notebook**.
 
-## !!!!
+Required packages:
+```bash
+torch
+torchvision
+numpy
+matplotlib
+scikit-learn
 
-The project was created as part of the course "Image and video Processing" at School of Electrical and Computer Engineering, NTUA and the aim of this work is NOT to present it as my own research but as my approach to the problems given. 
+## !!!
+The project was created as part of the course "Image and video Processing" at School of Electrical and Computer Engineering, NTUA and the aim of this work is NOT to present it as my own research but as my approach to the problems given.
+
