@@ -96,6 +96,9 @@ All results are included in the notebook with visualizations and markdown commen
 
 You can run the notebook in **Google Colab** or locally using **Jupyter Notebook**.
 
+## !!!
+The project was created as part of the course "Image and video Processing" at School of Electrical and Computer Engineering, NTUA and the aim of this work is NOT to present it as my own research but as my approach to the problems given.
+
 Required packages:
 ```bash
 torch
@@ -104,6 +107,4 @@ numpy
 matplotlib
 scikit-learn
 
-## !!!
-The project was created as part of the course "Image and video Processing" at School of Electrical and Computer Engineering, NTUA and the aim of this work is NOT to present it as my own research but as my approach to the problems given.
 
