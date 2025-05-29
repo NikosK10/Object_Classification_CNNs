@@ -90,5 +90,4 @@ Open the notebook in Google Colab or run it locally using Jupyter Notebook. Ensu
 ## Author
 
 **Nikolaos Katsaidonis**  
-Student ID: 03121868  
 National Technical University of Athens – School of Electrical & Computer Engineering
