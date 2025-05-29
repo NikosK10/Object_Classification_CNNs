@@ -91,3 +91,7 @@ Open the notebook in Google Colab or run it locally using Jupyter Notebook. Ensu
 
 **Nikolaos Katsaidonis**  
 National Technical University of Athens – School of Electrical & Computer Engineering
+
+## !!!!
+
+The project was created as part of the course "Image and video Processing" at School of Electrical and Computer Engineering, NTUA and the aim of this work is NOT to present it as my own research but as my approach to the problems given. 
